@@ -67,3 +67,5 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+example_auto_set_url.cmake
+build_pico2_w/

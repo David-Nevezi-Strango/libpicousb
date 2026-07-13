@@ -1,12 +1,18 @@
 add_executable(usbpro
-        main.cpp
+        main.cpp 
+)
+add_library(dev_lowlevel)
+target_include_directories(dev_lowlevel PUBLIC include)
+target_sources(dev_lowlevel 
+    PUBLIC ${CMAKE_SOURCE_DIR}/src/dev_lowlevel.c
 )
 
+target_link_libraries(dev_lowlevel PRIVATE pico_stdlib)
+target_link_libraries(usbpro PRIVATE pico_stdlib hardware_resets hardware_irq dev_lowlevel)
+
 # pull in common dependencies
-target_link_libraries(usbpro pico_stdlib)
 
 # create map/bin/hex/uf2 file etc.
 pico_add_extra_outputs(usbpro)
+# pico_add_extra_outputs(dev_lowlevel)
 
-# # call pico_set_program_url to set path to example on github, so users can find the source for an example via picotool
-# example_auto_set_url(usbpro)

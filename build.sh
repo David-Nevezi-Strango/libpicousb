@@ -3,14 +3,18 @@
 BOARD=pico2_w
 TARGET=$1
 
-if [[ -z "${TARGET}" ]]; then
-    echo "No target app was given. Please try again specifying one"
-    return
-fi
+# if [[ -z "${TARGET}" ]]; then
+#     echo "No target app was given. Please try again specifying one"
+#     return
+# fi
 BUILD_DIR=build_$BOARD
 INIT_PATH=`pwd`
-SCRIPT_PATH=`realpath "$0"`
+SCRIPT_PATH=`dirname $(realpath $BASH_SOURCE)`
+echo $SCRIPT_PATH
 cd $SCRIPT_PATH
+# echo 
+# cd $INIT_PATH
+# return
 # cd $HOME/repos/sandbox/exercises/pico/pico-examples
 
 cmake -S . -B $BUILD_DIR -GNinja -DPICO_BOARD=$BOARD -DCMAKE_BUILD_TYPE=Debug

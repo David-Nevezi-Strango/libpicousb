@@ -8,7 +8,7 @@ target_sources(dev_lowlevel
 )
 
 target_link_libraries(dev_lowlevel PRIVATE pico_stdlib)
-target_link_libraries(usbpro PRIVATE pico_stdlib hardware_resets hardware_irq dev_lowlevel)
+target_link_libraries(usbpro PRIVATE pico_stdlib hardware_resets hardware_irq dev_lowlevel pico_cyw43_arch_none)
 
 # pull in common dependencies
 

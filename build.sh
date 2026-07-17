@@ -3,10 +3,10 @@
 BOARD=pico2_w
 TARGET=$1
 
-# if [[ -z "${TARGET}" ]]; then
-#     echo "No target app was given. Please try again specifying one"
-#     return
-# fi
+if [[ -z "${TARGET}" ]]; then
+    echo "No target app was given. Please try again specifying one"
+    return || exit 1
+fi
 BUILD_DIR=build_$BOARD
 INIT_PATH=`pwd`
 SCRIPT_PATH=`dirname $(realpath $BASH_SOURCE)`

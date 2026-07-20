@@ -42,10 +42,10 @@ void set_irq(){
     add_repeating_timer_ms(250, repeating_timer_callback, NULL, &timer);
 }
 void led_init_registers() {
-    // Bring IO_BANK0 and PADS_BANK0 OUT of reset (and wait until done).
-    // NOTE: reset_block_num() ASSERTS reset; unreset_block_num_wait_blocking() deasserts it.
-    unreset_block_num_wait_blocking(6); //reset io and pads fpr routing gpio2 to sio
+    // Bring IO_BANK0 and PADS_BANK0 OUT of reset (and wait until done)..
+    unreset_block_num_wait_blocking(6); 
     unreset_block_num_wait_blocking(9);
+    //needed for routing gpio2 to sio
     // mux GPIO2 to SIO — named value, not 0x5
     io_bank0_hw->io[LED_PIN].ctrl = _u(0x05);
     // clear ISO + OD atomically via the hw_clear alias — no read-modify-write race
@@ -60,10 +60,10 @@ int main() {
     set_irq();
     // hard_assert(rc == PICO_OK);
     sleep_ms(5000000);
-    // while (true) {
+    while (true) {
         // led_toggle();
         // sleep_ms(LED_DELAY_MS);
         // led_toggle();
         // sleep_ms(LED_DELAY_MS);
-    // }
+    }
 }

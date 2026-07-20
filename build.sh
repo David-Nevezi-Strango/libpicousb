@@ -17,7 +17,7 @@ cd $SCRIPT_PATH
 # return
 # cd $HOME/repos/sandbox/exercises/pico/pico-examples
 
-cmake -S . -B $BUILD_DIR -GNinja -DPICO_BOARD=$BOARD -DCMAKE_BUILD_TYPE=Debug
+cmake -S . -B $BUILD_DIR -GNinja -DPICO_BOARD=$BOARD -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 echo "Building $TARGET for $BOARD"
 cmake --build $BUILD_DIR --target $TARGET
 
